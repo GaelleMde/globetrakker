@@ -4,13 +4,15 @@ import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import axios from "axios";
 import VisitedCountriesCard from "../components/VisitedCountriesCard";
+import { useNavigate } from "react-router-dom";
 
 function VisitedCountriesList() {
-  const [showSearch, setShowSearch] = useState(false);
+  /* const [showSearch, setShowSearch] = useState(false);  */
+  const navigate = useNavigate();
 
-  const handleToggleSearch = () => {
+  /*   const handleToggleSearch = () => {
     setShowSearch(!showSearch);
-  };
+  }; */
 
   const [alltravelLogs, setAllTravelLog] = useState([]);
 
@@ -26,43 +28,37 @@ function VisitedCountriesList() {
       });
   }, []);
 
-  if (showSearch === null) {
+  if (alltravelLogs === null) {
     return <h3>No visited countries yet...🥲</h3>;
   }
-
-  const travelLogIsvisited = alltravelLogs.filter((country) => {
-    return country.isVisited === true;
-  });
 
   return (
     <div id="top-banner">
       <div id="visited-btn">
         <h3>Visited Countries</h3>
-        <button id="btn-add" onClick={handleToggleSearch}>
+        <button id="btn-add" onClick={() => navigate("/travelLogs/addpage")}>
           +
         </button>
       </div>
       <div id="searchbar-ctn">
         <hr />
-        {showSearch && (
+        {/*         {showSearch && (
           <div>
             <input type="text" placeholder="Rechercher..." id="search-bar" />
             <SearchBar />
           </div>
-        )}
+        )} */}
       </div>
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "row",
+          flexDirection: "column",
         }}
       >
-        {travelLogIsvisited.length === 0 && (
-          <p>No visited countries yet...🥲 </p>
-        )}
-        {travelLogIsvisited.map((eachcountryVisited) => {
+        {alltravelLogs.length === 0 && <p>No visited countries yet...🥲 </p>}
+        {alltravelLogs.map((eachcountryVisited) => {
           return (
             <VisitedCountriesCard
               key={eachcountryVisited.id}

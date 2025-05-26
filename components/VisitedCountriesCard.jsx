@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../components/VisitedCountriesCard.css";
 
 function VisitedCountriesCard(props) {
-  //console.log(props);
+  console.log(props);
   return (
     <div id="visited-card">
       <Link to={`/travelLogs/${props.eachcountryVisited.id}`}>

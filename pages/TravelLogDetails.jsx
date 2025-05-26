@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
+/*  import TravelLogEditForm from "../components/TravelLogEditForm";  */
 
 function TravelLogDetails() {
   const [details, setDetails] = useState(null);
-
   const params = useParams();
   console.log(params);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5005/travelLogs?isVisited=true&_expand=country&travellogid=${params.travellogid}`
+        `http://localhost:5005/travelLogs/${params.travellogid}?_expand=country`
       )
       .then((response) => {
         console.log(response);
@@ -22,54 +23,75 @@ function TravelLogDetails() {
       });
   }, []);
 
+  const deletetravelLog = () => {
+    axios
+      .delete(`http://localhost:5005/travelLogs/${params.travellogid}`)
+      .then(() => {
+        navigate("/visitedcountries");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   if (details === null) {
     return <h3>... buscando detalles</h3>;
   }
+
   console.log(details);
+
   return (
-    <div>
+    <div id="travel-details-container">
       <img
-        src={details[0].country.flag}
-        alt={`Flag of ${details[0].country.name}`}
+        src={details.country.flag}
+        alt={`Flag of ${details.country.name}`}
         style={{ width: "200px", borderRadius: "8px" }}
       />
-      <h1>{details[0].country.name}</h1>
+      <h1>{details.country.name}</h1>
 
       <div id="trip-details-container">
         <h3>Trip Details</h3>
         <p>
-          <strong>Visited on:</strong> {details[0].visitedDate}
+          <strong>Visited on:</strong> {details.visitedDate}
         </p>
         <p>
-          <strong>Rating:</strong> {details[0].rating} / 5
+          <strong>Rating:</strong> {details.rating} / 5
         </p>
         <p>
-          <strong>Notes:</strong> {details[0].notes}
+          <strong>Notes:</strong> {details.notes}
         </p>
       </div>
 
-      <hr style={{ margin: "1.5em 0" }} />
+      <hr />
       <div>
         <h3>Country Information</h3>
         <p>
-          <strong>Capital:</strong> {details[0].country.capital}
+          <strong>Capital:</strong> {details.country.capital}
         </p>
         <p>
-          <strong>Continent:</strong> {details[0].country.continent}
+          <strong>Continent:</strong> {details.country.continent}
         </p>
         <p>
-          <strong>Currency:</strong> {details[0].country.currency}
+          <strong>Currency:</strong> {details.country.currency}
         </p>
         <p>
-          <strong>Area:</strong> {details[0].country.area} km2
+          <strong>Area:</strong> {details.country.area} km2
         </p>
         <p>
           <strong>Population:</strong>{" "}
-          {details[0].country.population.toLocaleString()}
+          {details.country.population.toLocaleString()}
         </p>
+      </div>
+      <div>
+        <Link to={`/travelLogs/${params.travellogid}/edit`}>
+          <button>Edit</button>
+        </Link>
+        <button onClick={deletetravelLog}>Delete</button>
       </div>
     </div>
   );
 }
 
 export default TravelLogDetails;
+
+/* http://localhost:5005/travelLogs?isVisited=true&_expand=country&travellogid=${params.travellogid} */

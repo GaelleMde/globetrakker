@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-function SearchBar() {
-  const [searchInputValue, setSearchInputValue] = useState("");
+function SearchBar(props) {
+  /* const [searchInputValue, setSearchInputValue] = useState(""); */
 
   const handleSearch = (event) => {
-    setSearchInputValue(event.target.value);
+    props.setSearchInputValue(event.target.value);
   };
   return (
     <div>
@@ -13,7 +13,7 @@ function SearchBar() {
         placeholder="Where in the world have you been?"
         id="search-bar"
         onChange={handleSearch}
-        value={searchInputValue}
+        value={props.searchInputValue}
       />
     </div>
   );
