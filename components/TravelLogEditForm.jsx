@@ -18,7 +18,9 @@ function TravelLogEditForm() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5005/travelLogs/${params.travellogid}?_expand=country`
+        `${import.meta.env.VITE_SERVER_URL}/travelLogs/${
+          params.travellogid
+        }?_expand=country`
       )
       .then((response) => {
         console.log(response);
@@ -47,7 +49,7 @@ function TravelLogEditForm() {
 
     try {
       axios.put(
-        `http://localhost:5005/travelLogs/${params.travellogid}`,
+        `${import.meta.env.VITE_SERVER_URL}/travelLogs/${params.travellogid}`,
         editedTravelLog
       );
       navigate(`/travelLogs/${params.travellogid}`);

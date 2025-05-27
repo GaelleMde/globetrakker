@@ -12,7 +12,11 @@ function WishList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/travelLogs?isVisited=false&_expand=country")
+      .get(
+        `${
+          import.meta.env.VITE_SERVER_URL
+        }/travelLogs?isVisited=false&_expand=country`
+      )
       .then((response) => {
         //console.log(response);
         setAllwishlist(response.data);
@@ -30,7 +34,10 @@ function WishList() {
     <div id="top-banner">
       <div id="visited-btn">
         <h3>Wishlist ✨</h3>
-        <button id="btn-add" onClick={() => navigate("/travelLogs/addpage")}>
+        <button
+          id="btn-add"
+          onClick={() => navigate("/travelLogs/wishlist/add")}
+        >
           +
         </button>
       </div>

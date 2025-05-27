@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Addform(props) {
   const navigate = useNavigate();
 
-  const [logType, setLogType] = useState("");
+  const params = useParams();
+  console.log(params);
+
+  // recoger el valor de params
+  // usarlo como valor inicial del estado
+
+  const [logType, setLogType] = useState(params.logType);
   const [date, setDate] = useState("");
   const [notes, setNotes] = useState("");
   const [rating, setRating] = useState("");
@@ -25,7 +31,7 @@ function Addform(props) {
     console.log(newLog);
 
     axios
-      .post("http://localhost:5005/travelLogs", newLog)
+      .post(`${import.meta.env.VITE_SERVER_URL}/travelLogs`, newLog)
       .then(() => {
         navigate(logType === "visited" ? "/visitedcountries" : "/wishlist");
       })

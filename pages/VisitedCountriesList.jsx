@@ -3,7 +3,7 @@ import "../pages/VisitedCountriesList.css";
 import { useState } from "react";
 import axios from "axios";
 import VisitedCountriesCard from "../components/VisitedCountriesCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function VisitedCountriesList() {
   const navigate = useNavigate();
@@ -12,7 +12,11 @@ function VisitedCountriesList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/travelLogs?isVisited=true&_expand=country")
+      .get(
+        `${
+          import.meta.env.VITE_SERVER_URL
+        }/travelLogs?isVisited=true&_expand=country`
+      )
       .then((response) => {
         //console.log(response);
         setAllTravelLog(response.data);
@@ -30,7 +34,10 @@ function VisitedCountriesList() {
     <div id="top-banner">
       <div id="visited-btn">
         <h3>Visited Countries</h3>
-        <button id="btn-add" onClick={() => navigate("/travelLogs/addpage")}>
+        <button
+          id="btn-add"
+          onClick={() => navigate("/travelLogs/visited/add")}
+        >
           +
         </button>
       </div>

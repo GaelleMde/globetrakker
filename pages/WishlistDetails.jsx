@@ -11,7 +11,9 @@ function WishlistDetails() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5005/travelLogs/${params.wishlistId}?_expand=country`
+        `${import.meta.env.VITE_SERVER_URL}/travelLogs/${
+          params.wishlistId
+        }?_expand=country`
       )
       .then((response) => {
         console.log(response);
@@ -24,7 +26,9 @@ function WishlistDetails() {
 
   const deletewishlist = () => {
     axios
-      .delete(`http://localhost:5005/travelLogs/${params.wishlistId}`)
+      .delete(
+        `${import.meta.env.VITE_SERVER_URL}/travelLogs/${params.wishlistId}`
+      )
       .then(() => {
         navigate("/wishlist");
       })

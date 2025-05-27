@@ -26,7 +26,7 @@ function App() {
         <Route path="/visitedcountries" element={<VisitedCountriesList />} />
         <Route path="/travelLogs/:travellogid" element={<TravelLogDetails />} />
         <Route path="/wishlist/:wishlistId" element={<WishlistDetails />} />
-        <Route path="/travelLogs/addpage" element={<AddPage />} />
+        <Route path="/travelLogs/:logType/add" element={<AddPage />} />
         <Route
           path="/travelLogs/:travellogid/edit"
           element={<TravelLogEditForm />}

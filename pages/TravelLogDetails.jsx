@@ -12,7 +12,9 @@ function TravelLogDetails() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5005/travelLogs/${params.travellogid}?_expand=country`
+        `${import.meta.env.VITE_SERVER_URL}/travelLogs/${
+          params.travellogid
+        }?_expand=country`
       )
       .then((response) => {
         //console.log(response);
@@ -25,7 +27,9 @@ function TravelLogDetails() {
 
   const deletetravelLog = () => {
     axios
-      .delete(`http://localhost:5005/travelLogs/${params.travellogid}`)
+      .delete(
+        `${import.meta.env.VITE_SERVER_URL}/travelLogs/${params.travellogid}`
+      )
       .then(() => {
         navigate("/visitedcountries");
       })
