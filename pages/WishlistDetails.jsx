@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
-/*  import TravelLogEditForm from "../components/TravelLogEditForm";  */
 
-function TravelLogDetails() {
+function WishlistDetails() {
   const [details, setDetails] = useState(null);
   const params = useParams();
-  //console.log(params);
+  console.log(params);
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5005/travelLogs/${params.travellogid}?_expand=country`
+        `http://localhost:5005/travelLogs/${params.wishlistId}?_expand=country`
       )
       .then((response) => {
-        //console.log(response);
+        console.log(response);
         setDetails(response.data);
       })
       .catch((error) => {
@@ -23,11 +22,11 @@ function TravelLogDetails() {
       });
   }, []);
 
-  const deletetravelLog = () => {
+  const deletewishlist = () => {
     axios
-      .delete(`http://localhost:5005/travelLogs/${params.travellogid}`)
+      .delete(`http://localhost:5005/travelLogs/${params.wishlistId}`)
       .then(() => {
-        navigate("/visitedcountries");
+        navigate("/wishlist");
       })
       .catch((error) => {
         console.log(error);
@@ -37,8 +36,6 @@ function TravelLogDetails() {
   if (details === null) {
     return <h3>... buscando detalles</h3>;
   }
-
-  console.log(details);
 
   return (
     <div id="travel-details-container">
@@ -50,13 +47,7 @@ function TravelLogDetails() {
       <h1>{details.country.name}</h1>
 
       <div id="trip-details-container">
-        <h3>Trip Details</h3>
-        <p>
-          <strong>Visited on:</strong> {details.visitedDate}
-        </p>
-        <p>
-          <strong>Rating:</strong> {details.rating} / 5
-        </p>
+        <h3>Places I'd like to visit</h3>
         <p>
           <strong>Notes:</strong> {details.notes}
         </p>
@@ -83,15 +74,13 @@ function TravelLogDetails() {
         </p>
       </div>
       <div>
-        <Link to={`/travelLogs/${params.travellogid}/edit`}>
+        <Link to={`/wishlist/${params.wishlistId}/edit`}>
           <button>Edit</button>
         </Link>
-        <button onClick={deletetravelLog}>Delete</button>
+        <button onClick={deletewishlist}>Delete</button>
       </div>
     </div>
   );
 }
 
-export default TravelLogDetails;
-
-/* http://localhost:5005/travelLogs?isVisited=true&_expand=country&travellogid=${params.travellogid} */
+export default WishlistDetails;

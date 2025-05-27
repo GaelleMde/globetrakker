@@ -20,7 +20,10 @@ function Dashboard() {
           View visited countries ✅
         </button>
 
-        <button id="btn-add-place-to-visit">
+        <button
+          onClick={() => navigate(`/wishlist`)}
+          id="btn-add-place-to-visit"
+        >
           View country to your wishlist ✨
         </button>
       </div>

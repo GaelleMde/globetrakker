@@ -1,35 +1,35 @@
 import React, { useEffect } from "react";
-import "../pages/VisitedCountriesList.css";
 import { useState } from "react";
 import axios from "axios";
 import VisitedCountriesCard from "../components/VisitedCountriesCard";
 import { useNavigate } from "react-router-dom";
+import WishListCard from "../components/WishListCard";
 
-function VisitedCountriesList() {
+function WishList() {
   const navigate = useNavigate();
 
-  const [alltravelLogs, setAllTravelLog] = useState([]);
+  const [wishlist, setAllwishlist] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/travelLogs?isVisited=true&_expand=country")
+      .get("http://localhost:5005/travelLogs?isVisited=false&_expand=country")
       .then((response) => {
         //console.log(response);
-        setAllTravelLog(response.data);
+        setAllwishlist(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  if (alltravelLogs === null) {
-    return <h3>No visited countries yet...🥲</h3>;
+  if (wishlist === null) {
+    return <h3> Your wishlist is emptier than a desert road 🌵🥲</h3>;
   }
 
   return (
     <div id="top-banner">
       <div id="visited-btn">
-        <h3>Visited Countries</h3>
+        <h3>Wishlist ✨</h3>
         <button id="btn-add" onClick={() => navigate("/travelLogs/addpage")}>
           +
         </button>
@@ -45,13 +45,9 @@ function VisitedCountriesList() {
           flexDirection: "column",
         }}
       >
-        {alltravelLogs.length === 0 && <p>No visited countries yet...🥲 </p>}
-        {alltravelLogs.map((eachcountryVisited) => {
+        {wishlist.map((eachwishlist) => {
           return (
-            <VisitedCountriesCard
-              key={eachcountryVisited.id}
-              eachcountryVisited={eachcountryVisited}
-            />
+            <WishListCard key={eachwishlist.id} eachwishlist={eachwishlist} />
           );
         })}
       </div>
@@ -59,4 +55,4 @@ function VisitedCountriesList() {
   );
 }
 
-export default VisitedCountriesList;
+export default WishList;

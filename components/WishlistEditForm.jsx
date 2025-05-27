@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-function TravelLogEditForm() {
+function WishlistEditForm() {
   const [countryId, setCountryId] = useState("");
   const [name, setName] = useState("");
   const [flag, setFlag] = useState("");
-  const [date, setDate] = useState("");
   const [notes, setNotes] = useState("");
-  const [rating, setRating] = useState("");
 
   const params = useParams();
   console.log(params);
@@ -18,16 +16,14 @@ function TravelLogEditForm() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5005/travelLogs/${params.travellogid}?_expand=country`
+        `http://localhost:5005/travelLogs/${params.wishlistId}?_expand=country`
       )
       .then((response) => {
         console.log(response);
         setCountryId(response.data.countryId);
         setName(response.data.country.name);
         setFlag(response.data.country.flag);
-        setDate(response.data.visitedDate);
         setNotes(response.data.notes);
-        setRating(response.data.rating);
       })
       .catch((error) => {
         console.log(error);
@@ -37,20 +33,18 @@ function TravelLogEditForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const editedTravelLog = {
+    const editedWishlist = {
       countryId: countryId,
-      isVisited: true,
-      visitedDate: date,
-      rating: rating,
+      isVisited: false,
       notes: notes,
     };
 
     try {
       axios.put(
-        `http://localhost:5005/travelLogs/${params.travellogid}`,
-        editedTravelLog
+        `http://localhost:5005/travelLogs/${params.wishlistId}`,
+        editedWishlist
       );
-      navigate(`/travelLogs/${params.travellogid}`);
+      navigate(`/wishlist/${params.wishlistId}`);
     } catch (error) {
       console.log(error);
     }
@@ -58,29 +52,13 @@ function TravelLogEditForm() {
 
   return (
     <div>
-      <h2>Modify travel log for {name}</h2>
+      <h2> Edit Wishlist for {name}</h2>
       <img
         src={flag}
         alt={`Flag of ${name}`}
         style={{ width: "80px", height: "auto", objectFit: "cover" }}
       />
       <form onSubmit={handleSubmit}>
-        <label>Date visited:</label>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-
-        <label>Rating :</label>
-        <input
-          type="number"
-          min="1"
-          max="5"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-        />
-
         <label>Notes :</label>
         <textarea
           type="text"
@@ -94,4 +72,4 @@ function TravelLogEditForm() {
   );
 }
 
-export default TravelLogEditForm;
+export default WishlistEditForm;

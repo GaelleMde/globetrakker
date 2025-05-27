@@ -9,7 +9,10 @@ import VisitedCountriesList from "../pages/VisitedCountriesList";
 import TravelLogDetails from "../pages/TravelLogDetails";
 import VisitedCountriesCard from "../components/VisitedCountriesCard";
 import AddPage from "../pages/AddPage";
-/* import TravelLogEditForm from "../components/TravelLogEditForm"; */
+import TravelLogEditForm from "../components/TravelLogEditForm";
+import WishList from "../pages/WishList";
+import WishlistDetails from "../pages/WishlistDetails";
+import WishlistEditForm from "../components/WishlistEditForm";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,13 +24,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/visitedcountries" element={<VisitedCountriesList />} />
-        {/* <Route path="travelLogs/:id" element={<VisitedCountriesCard />} /> */}
         <Route path="/travelLogs/:travellogid" element={<TravelLogDetails />} />
+        <Route path="/wishlist/:wishlistId" element={<WishlistDetails />} />
         <Route path="/travelLogs/addpage" element={<AddPage />} />
-        {/*   <Route
+        <Route
           path="/travelLogs/:travellogid/edit"
           element={<TravelLogEditForm />}
-        /> */}
+        />
+        <Route
+          path="/wishlist/:wishlistId/edit"
+          element={<WishlistEditForm />}
+        />
+        <Route path="/wishlist" element={<WishList />} />
       </Routes>
     </div>
   );
