@@ -1,19 +1,28 @@
-#NavBar {
-  background-color: #1e90ff;
+/* #my-navbar {
+  background-color: #4d6266 !important;
   display: flex;
   flex-direction: row;
-  color: white;
-  width: 90%;
+  color: #ffc50e !important;
+  width: 100%;
   margin: 0;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  height: 60px;
 }
 
-#logo-nav {
-  width: 30px;
+.responsive-img {
+  display: none;
 }
 
 h1 {
   margin: 20px 0;
 }
+
+@media (min-width: 990px) {
+  #logo-nav {
+    display: inline;
+    width: 32px;
+  }
+}
+*/

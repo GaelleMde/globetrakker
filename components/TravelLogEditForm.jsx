@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Form from "react-bootstrap/Form";
 
 function TravelLogEditForm() {
   const [countryId, setCountryId] = useState("");
@@ -59,39 +60,48 @@ function TravelLogEditForm() {
   };
 
   return (
-    <div>
-      <h2>Modify travel log for {name}</h2>
-      <img
-        src={flag}
-        alt={`Flag of ${name}`}
-        style={{ width: "80px", height: "auto", objectFit: "cover" }}
-      />
-      <form onSubmit={handleSubmit}>
-        <label>Date visited:</label>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+    <div id="modify-travel-ctn">
+      <Form onSubmit={handleSubmit}>
+        <h2>Modify travel log for {name}</h2>
+        <img
+          src={flag}
+          alt={`Flag of ${name}`}
+          style={{ width: "80px", height: "auto", objectFit: "cover" }}
         />
 
-        <label>Rating :</label>
-        <input
-          type="number"
-          min="1"
-          max="5"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-        />
+        <Form.Group className="mb-3">
+          <Form.Label>Date visited:</Form.Label>
+          <Form.Control
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </Form.Group>
 
-        <label>Notes :</label>
-        <textarea
-          type="text"
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-        />
+        <Form.Group className="mb-3">
+          <Form.Label>Rating :</Form.Label>
+          <Form.Control
+            type="number"
+            min="1"
+            max="5"
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Notes :</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={4}
+            type="text"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+          />
+        </Form.Group>
 
         <button type="submit">Confirm</button>
-      </form>
+      </Form>
     </div>
   );
 }

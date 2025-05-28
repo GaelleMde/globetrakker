@@ -1,7 +1,8 @@
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
 import Dashboard from "../pages/Dashboard";
 import Navbar from "../components/Navbar";
 import { Route, Routes } from "react-router-dom";
@@ -13,13 +14,14 @@ import TravelLogEditForm from "../components/TravelLogEditForm";
 import WishList from "../pages/WishList";
 import WishlistDetails from "../pages/WishlistDetails";
 import WishlistEditForm from "../components/WishlistEditForm";
+import MyNavbar from "../components/Navbar";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div id="main-app">
-      <Navbar />
+      <MyNavbar />
 
       <Routes>
         <Route path="/" element={<Dashboard />} />

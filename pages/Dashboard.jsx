@@ -1,13 +1,14 @@
 import React from "react";
 import "../pages/Dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
+import Statistic from "../components/Statistic";
 
 function Dashboard() {
   const navigate = useNavigate();
   return (
     <div id="main-dashboard">
       <img src="../public/Mapmvp.svg" alt="world-map" id="world-map" />
-      <div id="statistic-container"></div>
+      <Statistic></Statistic>
       <h2>
         Add countries to your visited list or wishlist to keep track of your
         travel adventures and dreams!

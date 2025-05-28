@@ -1,3 +1,50 @@
 #main-app {
   background-color: #f9f9f9;
 }
+
+#my-navbar {
+  background-color: #4d6266 !important;
+  display: flex;
+  flex-direction: row;
+  color: #ffc50e !important;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+}
+
+.responsive-img {
+  display: none;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+@media (min-width: 990px) {
+  #logo-nav {
+    display: inline;
+    width: 32px;
+  }
+}
+
+#modify-travel-ctn {
+  margin: 10%;
+  display: flex;
+  width: 80%;
+  justify-content: column;
+  border-style: solid;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-area {
+  width: 500px;
+}
+
+#statisic-ctn {
+  background-color: #ffc50e;
+  width: 100%;
+}
