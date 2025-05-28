@@ -11,8 +11,10 @@ function VisitedCountriesCard(props) {
           src={props.eachcountryVisited.country.flag}
           alt={`Flag of ${props.eachcountryVisited.country.name}`}
         />
-        <h4>{props.eachcountryVisited.country.name}</h4>
-        <h5>{props.eachcountryVisited.visitedDate}</h5>
+        <div id="text-card">
+          <h4>{props.eachcountryVisited.country.name}</h4>
+          <h5>{props.eachcountryVisited.visitedDate}</h5>
+        </div>
       </Link>
     </div>
   );

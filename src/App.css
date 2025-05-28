@@ -2,16 +2,16 @@
   background-color: #f9f9f9;
 }
 
-#my-navbar {
-  background-color: #4d6266 !important;
+.my-navbar {
+  background-color: #d8bc95 !important;
   display: flex;
   flex-direction: row;
-  color: #ffc50e !important;
+  color: red !important;
   width: 100%;
   margin: 0;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 200px;
   height: 60px;
 }
 
@@ -47,4 +47,58 @@ h1 {
 #statisic-ctn {
   background-color: #ffc50e;
   width: 100%;
+}
+
+#travellog-card {
+  background-color: #ffc50e;
+}
+
+.container-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+#travellog-card {
+  width: 400px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 40px;
+  width: 100%;
+  max-width: 800px;
+}
+
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#trip-details-container {
+  padding-top: 20px;
+}
+
+.card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.card-btn button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #432835;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: red;
 }

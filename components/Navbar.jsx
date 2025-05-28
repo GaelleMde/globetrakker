@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 function MyNavbar() {
   return (
-    <Navbar expand="lg" id="my-navbar">
-      <Navbar.Brand as={Link} to="/">
+    <Navbar expand="lg" className="my-navbar">
+      <Navbar.Brand as={Link} to="/" style={{ color: "#8f6968" }}>
         Globetrakker
       </Navbar.Brand>
 

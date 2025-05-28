@@ -45,52 +45,57 @@ function TravelLogDetails() {
   console.log(details);
 
   return (
-    <div id="travel-details-container">
-      <img
-        src={details.country.flag}
-        alt={`Flag of ${details.country.name}`}
-        style={{ width: "200px", borderRadius: "8px" }}
-      />
-      <h1>{details.country.name}</h1>
+    <div className="container-card">
+      <div id="travellog-card">
+        <div id="title">
+          <img
+            src={details.country.flag}
+            alt={`Flag of ${details.country.name}`}
+            style={{ width: "200px", borderRadius: "8px" }}
+          />
+          <h1>{details.country.name}</h1>
+        </div>
+        <div id="trip-details-container">
+          <h3>Trip Details</h3>
+          <p>
+            <strong>Visited on:</strong> {details.visitedDate}
+          </p>
+          <p>
+            <strong>Rating:</strong> {details.rating} / 5
+          </p>
+          <p>
+            <strong>Notes:</strong> {details.notes}
+          </p>
+        </div>
 
-      <div id="trip-details-container">
-        <h3>Trip Details</h3>
-        <p>
-          <strong>Visited on:</strong> {details.visitedDate}
-        </p>
-        <p>
-          <strong>Rating:</strong> {details.rating} / 5
-        </p>
-        <p>
-          <strong>Notes:</strong> {details.notes}
-        </p>
-      </div>
-
-      <hr />
-      <div>
-        <h3>Country Information</h3>
-        <p>
-          <strong>Capital:</strong> {details.country.capital}
-        </p>
-        <p>
-          <strong>Continent:</strong> {details.country.continent}
-        </p>
-        <p>
-          <strong>Currency:</strong> {details.country.currency}
-        </p>
-        <p>
-          <strong>Area:</strong> {details.country.area} km2
-        </p>
-        <p>
-          <strong>Population:</strong>{" "}
-          {details.country.population.toLocaleString()}
-        </p>
-      </div>
-      <div>
-        <Link to={`/travelLogs/${params.travellogid}/edit`}>
-          <button>Edit</button>
-        </Link>
-        <button onClick={deletetravelLog}>Delete</button>
+        <hr />
+        <div>
+          <h3>Country Information</h3>
+          <p>
+            <strong>Capital:</strong> {details.country.capital}
+          </p>
+          <p>
+            <strong>Continent:</strong> {details.country.continent}
+          </p>
+          <p>
+            <strong>Currency:</strong> {details.country.currency}
+          </p>
+          <p>
+            <strong>Area:</strong> {details.country.area} km2
+          </p>
+          <p>
+            <strong>Population:</strong>{" "}
+            {details.country.population.toLocaleString()}
+          </p>
+        </div>
+        <div class="card-btn">
+          <Link to={`/travelLogs/${params.travellogid}/edit`}>
+            <button>Edit</button>
+          </Link>
+          <button class="delete-btn" onClick={deletetravelLog}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -38,7 +38,7 @@ function VisitedCountriesList() {
           id="btn-add"
           onClick={() => navigate("/travelLogs/visited/add")}
         >
-          +
+          Add country
         </button>
       </div>
       <div id="searchbar-ctn">
