@@ -1,18 +1,8 @@
-#main-app {
-  background-color: #f9f9f9;
-}
+@import url("https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
-.my-navbar {
-  background-color: #d8bc95 !important;
-  display: flex;
-  flex-direction: row;
-  color: red !important;
-  width: 100%;
-  margin: 0;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 200px;
-  height: 60px;
+#main-app #root {
+  background-color: #f3f5f1 !important;
 }
 
 .responsive-img {
@@ -44,13 +34,12 @@ h1 {
   width: 500px;
 }
 
-#statisic-ctn {
-  background-color: #ffc50e;
-  width: 100%;
-}
-
 #travellog-card {
-  background-color: #ffc50e;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(46, 94, 78, 0.3);
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .container-card {
@@ -59,6 +48,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  font-family: "Quicksand", sans-serif;
 }
 
 #travellog-card {
@@ -77,10 +67,47 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  font-family: "Changa One", sans-serif;
+}
+
+#title-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Quicksand", sans-serif;
+  font-size: 100px;
+  margin-bottom: 32px;
+}
+
+.delete-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  min-width: 120px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+#title-edit h3 {
+  margin-bottom: 32px;
 }
 
 #trip-details-container {
   padding-top: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+#trip-details-container h3 {
+  font-family: "Changa One", sans-serif;
+  margin-bottom: 24px;
+  color: #2e5e4e;
+}
+
+.things-to-do {
+  font-family: "Changa One", sans-serif;
+  margin-bottom: 24px;
+  color: #2e5e4e;
+  font-size: 1.75rem;
 }
 
 .card-btn {
@@ -88,17 +115,161 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .card-btn button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #432835;
-  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  min-width: 120px;
   cursor: pointer;
+  margin: 10px 0;
 }
 
 .delete-btn {
-  background-color: red;
+  border-color: #b04a3f;
+  border-style: solid;
+  color: #b04a3f !important;
+  background-color: transparent !important;
+}
+.edit-btn {
+  color: white;
+  background-color: #2e5e4e;
+  border: none;
+  border-style: solid;
+  border-color: #2e5e4e;
+}
+
+.confirm-btn {
+  color: white;
+  background-color: #2e5e4e;
+  border: none;
+  border-style: solid;
+  border-color: #2e5e4e;
+}
+
+/* TRAVEL LOG DETAILS */
+.accordion-info {
+  display: flex;
+  justify-content: center;
+}
+.country-info {
+  color: #999999;
+  padding: 0;
+  font-size: 16;
+  font-family: "Quicksand", sans-serif;
+}
+
+#addpage-ctn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+  max-width: 800px;
+  margin: auto;
+}
+
+#country-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+  margin-left: 5rem;
+}
+
+.country-list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.country-list:hover {
+  background-color: #f2f2f2;
+}
+
+.country-list p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+#top-banner {
+  display: flex;
+  flex-direction: column;
+}
+
+#visited-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 10px 0 10px;
+  align-items: center;
+}
+
+#btn-add {
+  border-radius: 25px;
+  border: none;
+  background-color: #ffcc00;
+  font-size: 16px;
+  text-align: center;
+  padding: 10px 15px;
+}
+#searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#search-bar {
+  width: 80%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.6s ease;
+  margin: 12px 8px;
+}
+
+#searchbar-ctn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+hr {
+  background-color: #ccc;
+  height: 1px;
+  width: 90%;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .country-list p {
+    font-size: 14px;
+  }
+
+  .country-list {
+    padding: 8px 10px;
+  }
+
+  .country-list img {
+    width: 30px;
+    height: 20px;
+  }
 }

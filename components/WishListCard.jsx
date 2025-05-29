@@ -1,18 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function WishListCard(props) {
   console.log(props);
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/wishlist/${props.eachwishlist.id}`);
+  };
   return (
-    <div id="visited-card">
-      <Link to={`/wishlist/${props.eachwishlist.id}`}>
+    <div id="visited-card" onClick={handleClick}>
+      <div id="text-card2">
         <img
           src={props.eachwishlist.country.flag}
           alt={`Flag of ${props.eachwishlist.country.name}`}
         />
-        <h4>{props.eachwishlist.country.name}</h4>
-      </Link>
+        <div id="text-card">
+          <h4>{props.eachwishlist.country.name}</h4>
+        </div>
+      </div>
     </div>
   );
 }

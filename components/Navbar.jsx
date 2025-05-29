@@ -7,8 +7,13 @@ import { Link } from "react-router-dom";
 function MyNavbar() {
   return (
     <Navbar expand="lg" className="my-navbar">
-      <Navbar.Brand as={Link} to="/" style={{ color: "#8f6968" }}>
-        Globetrakker
+      <Navbar.Brand as={Link} to="/" className="navbar-title">
+        <img
+          src="/Globetrakker-logo.svg"
+          alt="Logo"
+          id="logo-nav"
+          className="responsive-img"
+        />
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,17 +27,17 @@ function MyNavbar() {
             Place to visit ✨
           </Nav.Link>
           <Nav.Link as={Link} to="">
-            About 🙍🏽‍♀️
+            About me 🙍🏽‍♀️
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
 
-      <img
+      {/*       <img
         src="/Logomvp.svg"
         alt="Logo"
         id="logo-nav"
         className="responsive-img"
-      />
+      /> */}
     </Navbar>
   );
 }

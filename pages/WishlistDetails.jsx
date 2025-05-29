@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
+import Accordion from "react-bootstrap/Accordion";
 
 function WishlistDetails() {
   const [details, setDetails] = useState(null);
   const params = useParams();
   console.log(params);
   const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/wishlist/${params.wishlistId}/edit`);
+  };
 
   useEffect(() => {
     axios
@@ -42,46 +47,44 @@ function WishlistDetails() {
   }
 
   return (
-    <div id="travel-details-container">
-      <img
-        src={details.country.flag}
-        alt={`Flag of ${details.country.name}`}
-        style={{ width: "200px", borderRadius: "8px" }}
-      />
-      <h1>{details.country.name}</h1>
+    <div className="container-card">
+      <div id="travellog-card">
+        <div id="title">
+          <img
+            src={details.country.flag}
+            alt={`Flag of ${details.country.name}`}
+            style={{ width: "200px", borderRadius: "8px" }}
+          />
+          <h1>{details.country.name}</h1>
+        </div>
+        <div id="trip-details-container">
+          <h3>Things to Do:</h3>
+          <p>{details.notes}</p>
+        </div>
 
-      <div id="trip-details-container">
-        <h3>Places I'd like to visit</h3>
-        <p>
-          <strong>Notes:</strong> {details.notes}
-        </p>
-      </div>
+        <hr />
+        <Accordion defaultActiveKey="0">
+          <Accordion.Header>Country Information</Accordion.Header>
+          <Accordion.Body className="country-info">
+            <strong>Capital:</strong> {details.country.capital} <br />
+            <strong>Continent:</strong> {details.country.continent} <br />
+            <strong>Currency:</strong> {details.country.currency} <br />
+            <strong>Area:</strong> {details.country.area} km2 <br />
+            <p>
+              <strong>Population:</strong>{" "}
+              {details.country.population.toLocaleString()}
+            </p>
+          </Accordion.Body>
+        </Accordion>
+        <div className="card-btn">
+          <button className="edit-btn" onClick={handleEditClick}>
+            Edit
+          </button>
 
-      <hr />
-      <div>
-        <h3>Country Information</h3>
-        <p>
-          <strong>Capital:</strong> {details.country.capital}
-        </p>
-        <p>
-          <strong>Continent:</strong> {details.country.continent}
-        </p>
-        <p>
-          <strong>Currency:</strong> {details.country.currency}
-        </p>
-        <p>
-          <strong>Area:</strong> {details.country.area} km2
-        </p>
-        <p>
-          <strong>Population:</strong>{" "}
-          {details.country.population.toLocaleString()}
-        </p>
-      </div>
-      <div>
-        <Link to={`/wishlist/${params.wishlistId}/edit`}>
-          <button>Edit</button>
-        </Link>
-        <button onClick={deletewishlist}>Delete</button>
+          <button className="delete-btn" onClick={deletewishlist}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );

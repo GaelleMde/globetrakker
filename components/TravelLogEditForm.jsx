@@ -60,14 +60,16 @@ function TravelLogEditForm() {
   };
 
   return (
-    <div id="modify-travel-ctn">
-      <Form onSubmit={handleSubmit}>
-        <h2>Modify travel log for {name}</h2>
-        <img
-          src={flag}
-          alt={`Flag of ${name}`}
-          style={{ width: "80px", height: "auto", objectFit: "cover" }}
-        />
+    <div className="container-card">
+      <Form onSubmit={handleSubmit} id="travellog-card">
+        <div id="title-edit">
+          <h3>Update details for your trip to {name}</h3>
+          <img
+            src={flag}
+            alt={`Flag of ${name}`}
+            style={{ width: "200px", borderRadius: "8px" }}
+          />
+        </div>
 
         <Form.Group className="mb-3">
           <Form.Label>Date visited:</Form.Label>
@@ -90,7 +92,7 @@ function TravelLogEditForm() {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Notes :</Form.Label>
+          <Form.Label>Things to Do</Form.Label>
           <Form.Control
             as="textarea"
             rows={4}
@@ -99,8 +101,11 @@ function TravelLogEditForm() {
             onChange={(e) => setNotes(e.target.value)}
           />
         </Form.Group>
-
-        <button type="submit">Confirm</button>
+        <div className="card-btn">
+          <button className="confirm-btn" type="submit">
+            Confirm
+          </button>
+        </div>
       </Form>
     </div>
   );

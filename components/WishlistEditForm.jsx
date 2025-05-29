@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Form from "react-bootstrap/Form";
 
 function WishlistEditForm() {
   const [countryId, setCountryId] = useState("");
@@ -53,23 +54,33 @@ function WishlistEditForm() {
   };
 
   return (
-    <div>
-      <h2> Edit Wishlist for {name}</h2>
-      <img
-        src={flag}
-        alt={`Flag of ${name}`}
-        style={{ width: "80px", height: "auto", objectFit: "cover" }}
-      />
-      <form onSubmit={handleSubmit}>
-        <label>Notes :</label>
-        <textarea
-          type="text"
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-        />
+    <div className="container-card">
+      <Form onSubmit={handleSubmit} id="travellog-card">
+        <div id="title-edit">
+          <h2> Edit Wishlist for {name}</h2>
+          <img
+            src={flag}
+            alt={`Flag of ${name}`}
+            style={{ width: "200px", borderRadius: "8px" }}
+          />
+        </div>
 
-        <button type="submit">Confirm</button>
-      </form>
+        <Form.Group className="mb-3">
+          <Form.Label className="things-to-do">Things to Do:</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={4}
+            type="text"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+          />
+        </Form.Group>
+        <div className="card-btn">
+          <button className="confirm-btn" type="submit">
+            Confirm
+          </button>
+        </div>
+      </Form>
     </div>
   );
 }

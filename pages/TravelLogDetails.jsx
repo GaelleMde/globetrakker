@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
+import Accordion from "react-bootstrap/Accordion";
 /*  import TravelLogEditForm from "../components/TravelLogEditForm";  */
 
 function TravelLogDetails() {
@@ -8,6 +9,10 @@ function TravelLogDetails() {
   const params = useParams();
   //console.log(params);
   const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/travelLogs/${params.travellogid}/edit`);
+  };
 
   useEffect(() => {
     axios
@@ -56,43 +61,48 @@ function TravelLogDetails() {
           <h1>{details.country.name}</h1>
         </div>
         <div id="trip-details-container">
-          <h3>Trip Details</h3>
-          <p>
-            <strong>Visited on:</strong> {details.visitedDate}
-          </p>
-          <p>
-            <strong>Rating:</strong> {details.rating} / 5
-          </p>
-          <p>
-            <strong>Notes:</strong> {details.notes}
-          </p>
+          <h3> My trip🌍 </h3>
+          <div id="my-trip">
+            <p>
+              <span>Visited on:</span> {details.visitedDate}
+            </p>
+            <p>
+              <span>Rating:</span> {details.rating} / 5
+            </p>
+
+            <span>Notes:</span>
+            <p>
+              {" "}
+              <strong>{details.notes}</strong>
+            </p>
+          </div>
         </div>
 
         <hr />
-        <div>
-          <h3>Country Information</h3>
-          <p>
+        <Accordion defaultActiveKey="0">
+          <Accordion.Header>Country Information</Accordion.Header>
+          <Accordion.Body className="country-info">
             <strong>Capital:</strong> {details.country.capital}
-          </p>
-          <p>
+            <br />
             <strong>Continent:</strong> {details.country.continent}
-          </p>
-          <p>
+            <br />
             <strong>Currency:</strong> {details.country.currency}
-          </p>
-          <p>
-            <strong>Area:</strong> {details.country.area} km2
-          </p>
-          <p>
-            <strong>Population:</strong>{" "}
-            {details.country.population.toLocaleString()}
-          </p>
-        </div>
-        <div class="card-btn">
-          <Link to={`/travelLogs/${params.travellogid}/edit`}>
-            <button>Edit</button>
-          </Link>
-          <button class="delete-btn" onClick={deletetravelLog}>
+            <br />
+            <strong>Area:</strong> {details.country.area} km<sup>2</sup>
+            <br />
+            <p>
+              <strong>Population:</strong>{" "}
+              {details.country.population.toLocaleString()}
+            </p>
+          </Accordion.Body>
+        </Accordion>
+
+        <div className="card-btn">
+          <button className="edit-btn" onClick={handleEditClick}>
+            Edit
+          </button>
+
+          <button className="delete-btn" onClick={deletetravelLog}>
             Delete
           </button>
         </div>

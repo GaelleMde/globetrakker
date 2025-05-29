@@ -4,7 +4,7 @@ import axios from "axios";
 import VisitedCountriesCard from "../components/VisitedCountriesCard";
 import { useNavigate } from "react-router-dom";
 import WishListCard from "../components/WishListCard";
-
+import "../pages/Wishlist.css";
 function WishList() {
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ function WishList() {
           id="btn-add"
           onClick={() => navigate("/travelLogs/wishlist/add")}
         >
-          +
+          Add country
         </button>
       </div>
       <div id="searchbar-ctn">

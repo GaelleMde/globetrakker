@@ -27,43 +27,45 @@ function AddPage() {
   }
 
   return (
-    <div>
-      Choose a country
+    <div id="addpage-ctn">
       <SearchBar
         setSearchInputValue={setSearchInputValue}
         searchInputValue={searchInputValue}
       />
-      {countries
-        .filter((eachCountry) => {
-          if (searchInputValue === "") {
-            return true;
-          }
-          return eachCountry.name
-            .toLowerCase()
-            .startsWith(searchInputValue.toLowerCase());
-        })
-        .map((eachCountry) => {
-          return (
-            <div
-              onClick={() => setSelectedCountry(eachCountry)}
-              key={eachCountry.id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                marginBottom: "8px",
-              }}
-            >
-              <img
-                src={eachCountry.flag}
-                alt={`Flag of ${eachCountry.name}`}
-                style={{ width: "30px", height: "20px", objectFit: "cover" }}
-              />
-              <p>{eachCountry.name}</p>
-              {/* <p>{eachCountry.isPurchased === true ? "✅" : "🟡"}</p> */}
-            </div>
-          );
-        })}
+
+      <div className="country-list-wrapper">
+        {countries
+          .filter((eachCountry) => {
+            if (searchInputValue === "") {
+              return true;
+            }
+            return eachCountry.name
+              .toLowerCase()
+              .startsWith(searchInputValue.toLowerCase());
+          })
+          .map((eachCountry) => {
+            return (
+              <div
+                className="country-list"
+                onClick={() => setSelectedCountry(eachCountry)}
+                key={eachCountry.id}
+              >
+                <img
+                  src={eachCountry.flag}
+                  alt={`Flag of ${eachCountry.name}`}
+                  style={{
+                    width: "35px",
+                    height: "25px",
+                    objectFit: "cover",
+                    borderRadius: "6px",
+                  }}
+                />
+                <p style={{ margin: 0 }}> {eachCountry.name}</p>
+                {/* <p>{eachCountry.isPurchased === true ? "✅" : "🟡"}</p> */}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }
