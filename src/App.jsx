@@ -15,6 +15,7 @@ import WishList from "../pages/WishList";
 import WishlistDetails from "../pages/WishlistDetails";
 import WishlistEditForm from "../components/WishlistEditForm";
 import MyNavbar from "../components/Navbar";
+import AboutMe from "../pages/AboutMe";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/visitedcountries" element={<VisitedCountriesList />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/travelLogs/:travellogid" element={<TravelLogDetails />} />
         <Route path="/wishlist/:wishlistId" element={<WishlistDetails />} />
         <Route path="/travelLogs/:logType/add" element={<AddPage />} />
@@ -37,7 +39,7 @@ function App() {
           path="/wishlist/:wishlistId/edit"
           element={<WishlistEditForm />}
         />
-        <Route path="/wishlist" element={<WishList />} />
+        <Route path="/AboutMe" element={<AboutMe />} />
       </Routes>
     </div>
   );

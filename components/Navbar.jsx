@@ -9,9 +9,9 @@ function MyNavbar() {
     <Navbar expand="lg" className="my-navbar">
       <Navbar.Brand as={Link} to="/" className="navbar-title">
         <img
-          src="/Globetrakker-logo.svg"
+          src="/Logo.svg"
           alt="Logo"
-          id="logo-nav"
+          id="logo-desktop"
           className="responsive-img"
         />
       </Navbar.Brand>
@@ -24,9 +24,9 @@ function MyNavbar() {
             Visited Countries 🌍
           </Nav.Link>
           <Nav.Link as={Link} to="/wishlist">
-            Place to visit ✨
+            Places to visit ✨
           </Nav.Link>
-          <Nav.Link as={Link} to="">
+          <Nav.Link as={Link} to="/AboutMe">
             About me 🙍🏽‍♀️
           </Nav.Link>
         </Nav>

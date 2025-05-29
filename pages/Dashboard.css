@@ -3,19 +3,14 @@
   align-items: center;
   flex-direction: row-reverse;
   text-align: center;
+  margin-top: 60px;
 }
 
 #left-part {
   display: flex;
   flex-direction: column;
-  margin-left: 60px;
+  margin-left: 90px;
   text-align: left;
-}
-
-#statistic-container {
-  height: 200px;
-  width: 100%;
-  background-color: #1e90ff;
 }
 
 #btn-container {
@@ -50,7 +45,7 @@
 
 #text-landing-page h2 {
   font-family: "Changa One", sans-serif;
-  font-size: 36px;
+  font-size: 48px;
   margin-bottom: 12px;
 }
 
@@ -62,12 +57,12 @@
 
 #main-dashboard img {
   height: 50%;
-
   margin: 100px;
   margin-top: 150px;
+  margin-left: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
   #main-dashboard {
     display: flex;
     flex-direction: column;
@@ -76,15 +71,7 @@
 
   #main-dashboard img {
     width: 350px;
-  }
-
-  #text-landing-page h2 {
-    margin-bottom: 14px;
-    font-size: 24px;
-  }
-
-  #text-landing-page h3 {
-    font-size: 16px;
+    margin: 50px;
   }
 
   #left-part {
@@ -92,7 +79,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   #btn-container {
     display: flex;
     flex-direction: column;

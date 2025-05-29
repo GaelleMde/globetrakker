@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
 function Addform(props) {
   const navigate = useNavigate();
@@ -41,49 +42,71 @@ function Addform(props) {
   };
 
   return (
-    <div>
-      <h2>Add travel log for a {selectedCountry.name}</h2>
-      <img
-        src={selectedCountry.flag}
-        alt={`Flag of ${selectedCountry.name}`}
-        style={{ width: "80px", height: "auto", objectFit: "cover" }}
-      />
-      <form onSubmit={handleSubmit}>
-        <label>Add to list:</label>
-        <select value={logType} onChange={(e) => setLogType(e.target.value)}>
-          <option value="visited">Visited country</option>
-          <option value="wishlist">Wishlist</option>
-        </select>
+    <div className="container-card">
+      <Form onSubmit={handleSubmit} id="travellog-card">
+        <div id="title-edit">
+          <h2>Add travel log for {selectedCountry.name}</h2>
+          <img
+            src={selectedCountry.flag}
+            alt={`Flag of ${selectedCountry.name}`}
+            style={{ width: "200px", borderRadius: "8px" }}
+          />
+        </div>
 
-        {logType === "visited" && (
-          <>
-            <label>Date visited:</label>
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
+        {/* <form onSubmit={handleSubmit}> */}
+        <Form.Group className="mb-3">
+          <Form.Label>Add to list: </Form.Label>
+          <Form.Select
+            value={logType}
+            onChange={(e) => setLogType(e.target.value)}
+          >
+            <option value="visited">Visited country</option>
+            <option value="wishlist">Wishlist</option>
+          </Form.Select>
+        </Form.Group>
 
-            <label>Rating :</label>
-            <input
-              type="number"
-              min="1"
-              max="5"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-            />
-          </>
-        )}
+        <Form.Group className="mb-3">
+          {logType === "visited" && (
+            <>
+              <Form.Group className="mb-3">
+                <Form.Label>Date visited:</Form.Label>
+                <Form.Control
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </Form.Group>
 
-        <label>Notes :</label>
-        <textarea
-          type="text"
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-        />
+              <Form.Group className="mb-3">
+                <Form.Label>Rating :</Form.Label>
+                <Form.Control
+                  type="number"
+                  min="1"
+                  max="5"
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}
+                />
+              </Form.Group>
+            </>
+          )}
+        </Form.Group>
 
-        <button type="submit">Add travel ✅</button>
-      </form>
+        <Form.Group className="mb-3">
+          <Form.Label>Notes :</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={4}
+            type="text"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+          />
+        </Form.Group>
+        <div className="card-btn">
+          <button className="confirm-btn" type="submit">
+            Add travel ✅
+          </button>
+        </div>
+      </Form>
     </div>
   );
 }
