@@ -7,11 +7,7 @@ function Dashboard() {
   const navigate = useNavigate();
   return (
     <div id="main-dashboard">
-      <img
-        src="../public/Img-landing-page.svg"
-        alt="world-map"
-        id="world-map"
-      />
+      <img src="Img-landing-page.svg" alt="world-map" id="world-map" />
       {/* <Statistic></Statistic> */}
       <div id="left-part">
         <div id="text-landing-page">
