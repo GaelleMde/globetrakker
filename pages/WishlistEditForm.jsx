@@ -10,7 +10,6 @@ function WishlistEditForm() {
   const [notes, setNotes] = useState("");
 
   const params = useParams();
-  console.log(params);
 
   const navigate = useNavigate();
 

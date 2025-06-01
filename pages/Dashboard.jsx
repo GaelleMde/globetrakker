@@ -1,14 +1,12 @@
 import React from "react";
 import "../pages/Dashboard.css";
-import { Link, useNavigate } from "react-router-dom";
-import Statistic from "../components/Statistic";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const navigate = useNavigate();
   return (
     <div id="main-dashboard">
       <img src="Img-landing-page.svg" alt="world-map" id="world-map" />
-      {/* <Statistic></Statistic> */}
       <div id="left-part">
         <div id="text-landing-page">
           <h2>

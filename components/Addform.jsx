@@ -7,10 +7,6 @@ function Addform(props) {
   const navigate = useNavigate();
 
   const params = useParams();
-  console.log(params);
-
-  // recoger el valor de params
-  // usarlo como valor inicial del estado
 
   const [logType, setLogType] = useState(params.logType);
   const [date, setDate] = useState("");
@@ -53,7 +49,6 @@ function Addform(props) {
           />
         </div>
 
-        {/* <form onSubmit={handleSubmit}> */}
         <Form.Group className="mb-3">
           <Form.Label>Add to list: </Form.Label>
           <Form.Select
@@ -78,7 +73,7 @@ function Addform(props) {
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>Rating :</Form.Label>
+                <Form.Label>Rating (from 0 to 5):</Form.Label>
                 <Form.Control
                   type="number"
                   min="1"

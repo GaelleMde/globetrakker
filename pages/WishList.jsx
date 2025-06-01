@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import VisitedCountriesCard from "../components/VisitedCountriesCard";
 import { useNavigate } from "react-router-dom";
 import WishListCard from "../components/WishListCard";
 import "../pages/Wishlist.css";
+
 function WishList() {
   const navigate = useNavigate();
 
@@ -18,7 +18,6 @@ function WishList() {
         }/travelLogs?isVisited=false&_expand=country`
       )
       .then((response) => {
-        //console.log(response);
         setAllwishlist(response.data);
       })
       .catch((error) => {
@@ -27,7 +26,7 @@ function WishList() {
   }, []);
 
   if (wishlist === null) {
-    return <h3> Your wishlist is emptier than a desert road 🌵🥲</h3>;
+    return <h3> Loading your data...patience, traveler 🧭</h3>;
   }
 
   return (

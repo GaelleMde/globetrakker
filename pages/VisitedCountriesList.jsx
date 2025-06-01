@@ -3,7 +3,7 @@ import "../pages/VisitedCountriesList.css";
 import { useState } from "react";
 import axios from "axios";
 import VisitedCountriesCard from "../components/VisitedCountriesCard";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function VisitedCountriesList() {
   const navigate = useNavigate();
@@ -18,7 +18,6 @@ function VisitedCountriesList() {
         }/travelLogs?isVisited=true&_expand=country`
       )
       .then((response) => {
-        //console.log(response);
         setAllTravelLog(response.data);
       })
       .catch((error) => {
@@ -27,7 +26,7 @@ function VisitedCountriesList() {
   }, []);
 
   if (alltravelLogs === null) {
-    return <h3>No visited countries yet...🥲</h3>;
+    return <h3>Loading your data...patience, traveler 🧭</h3>;
   }
 
   return (

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Accordion from "react-bootstrap/Accordion";
-/*  import TravelLogEditForm from "../components/TravelLogEditForm";  */
 
 function TravelLogDetails() {
   const [details, setDetails] = useState(null);
   const params = useParams();
-  //console.log(params);
+
   const navigate = useNavigate();
 
   const handleEditClick = () => {
@@ -22,7 +21,6 @@ function TravelLogDetails() {
         }?_expand=country`
       )
       .then((response) => {
-        //console.log(response);
         setDetails(response.data);
       })
       .catch((error) => {
@@ -44,7 +42,7 @@ function TravelLogDetails() {
   };
 
   if (details === null) {
-    return <h3>... buscando detalles</h3>;
+    return <h3>Loading your data...patience, traveler 🧭</h3>;
   }
 
   console.log(details);
@@ -112,5 +110,3 @@ function TravelLogDetails() {
 }
 
 export default TravelLogDetails;
-
-/* http://localhost:5005/travelLogs?isVisited=true&_expand=country&travellogid=${params.travellogid} */

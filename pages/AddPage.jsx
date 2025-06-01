@@ -61,7 +61,6 @@ function AddPage() {
                   }}
                 />
                 <p style={{ margin: 0 }}> {eachCountry.name}</p>
-                {/* <p>{eachCountry.isPurchased === true ? "✅" : "🟡"}</p> */}
               </div>
             );
           })}

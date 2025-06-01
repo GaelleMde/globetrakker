@@ -1,11 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../components/VisitedCountriesCard.css";
 import { useNavigate } from "react-router-dom";
 
 function VisitedCountriesCard(props) {
-  console.log(props);
-
   const navigate = useNavigate();
 
   const handleClick = () => {

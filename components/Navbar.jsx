@@ -31,13 +31,6 @@ function MyNavbar() {
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
-
-      {/*       <img
-        src="/Logomvp.svg"
-        alt="Logo"
-        id="logo-nav"
-        className="responsive-img"
-      /> */}
     </Navbar>
   );
 }

@@ -12,7 +12,6 @@ function TravelLogEditForm() {
   const [rating, setRating] = useState("");
 
   const params = useParams();
-  console.log(params);
 
   const navigate = useNavigate();
 
