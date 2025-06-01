@@ -59,7 +59,7 @@ a:hover {
 #all-redes {
   display: flex;
   justify-content: space-around;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 @media (max-width: 600px) {

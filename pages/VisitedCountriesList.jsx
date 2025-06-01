@@ -51,7 +51,6 @@ function VisitedCountriesList() {
           flexDirection: "column",
         }}
       >
-        {alltravelLogs.length === 0 && <p>No visited countries yet...🥲 </p>}
         {alltravelLogs.map((eachcountryVisited) => {
           return (
             <VisitedCountriesCard
