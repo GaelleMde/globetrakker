@@ -10,7 +10,7 @@ function AddPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/countries")
+      .get(`${import.meta.env.VITE_SERVER_URL}/countries`)
       .then((response) => {
         console.log(response);
         setCountries(response.data);
