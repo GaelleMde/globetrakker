@@ -36,7 +36,7 @@ function TravelLogEditForm() {
       });
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const editedTravelLog = {
@@ -48,7 +48,7 @@ function TravelLogEditForm() {
     };
 
     try {
-      axios.put(
+      await axios.put(
         `${import.meta.env.VITE_SERVER_URL}/travelLogs/${params.travellogid}`,
         editedTravelLog
       );

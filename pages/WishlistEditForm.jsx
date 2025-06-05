@@ -32,7 +32,7 @@ function WishlistEditForm() {
       });
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const editedWishlist = {
@@ -42,7 +42,7 @@ function WishlistEditForm() {
     };
 
     try {
-      axios.put(
+      await axios.put(
         `${import.meta.env.VITE_SERVER_URL}/travelLogs/${params.wishlistId}`,
         editedWishlist
       );
